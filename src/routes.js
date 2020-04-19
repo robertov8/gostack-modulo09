@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,8 +12,41 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 
+import SelectProvider from './pages/New/SelectProvider';
+import SelectDateTime from './pages/New/SelectDateTime';
+import Confim from './pages/New/Confirm';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+function New() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerTransparent: true,
+        headerTintColor: '#fff',
+        headerLeftContainerStyle: {
+          marginLeft: 20,
+        },
+      }}>
+      <Stack.Screen
+        name="SelectProvider"
+        component={SelectProvider}
+        options={({ navigation }) => ({
+          title: 'Selecione o prestador',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+              <Icon name="chevron-left" size={20} color="#fff" />
+            </TouchableOpacity>
+          ),
+        })}
+      />
+      <Stack.Screen name="SelectDateTime" component={SelectDateTime} />
+      <Stack.Screen name="Confim" component={Confim} />
+    </Stack.Navigator>
+  );
+}
 
 function App() {
   return (
@@ -33,6 +67,18 @@ function App() {
           tabBarLabel: 'Agendamentos',
           tabBarIcon: ({ color, size }) => (
             <Icon name="event" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="New"
+        component={New}
+        options={{
+          tabBarVisible: false,
+          tabBarLabel: 'Agendar',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="add-circle-outline" color={color} size={size} />
           ),
         }}
       />
