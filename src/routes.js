@@ -54,7 +54,13 @@ function New() {
           ),
         })}
       />
-      <Stack.Screen name="Confirm" component={Confim} />
+      <Stack.Screen
+        name="Confirm"
+        component={Confim}
+        options={{
+          title: 'Confirmar agendamento',
+        }}
+      />
     </Stack.Navigator>
   );
 }
