@@ -54,7 +54,7 @@ function New() {
           ),
         })}
       />
-      <Stack.Screen name="Confim" component={Confim} />
+      <Stack.Screen name="Confirm" component={Confim} />
     </Stack.Navigator>
   );
 }
