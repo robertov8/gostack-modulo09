@@ -37,7 +37,7 @@ function New() {
           title: 'Selecione o prestador',
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-              <Icon name="chevron-left" size={20} color="#fff" />
+              <Icon name="chevron-left" size={35} color="#fff" />
             </TouchableOpacity>
           ),
         })}
@@ -45,7 +45,14 @@ function New() {
       <Stack.Screen
         name="SelectDateTime"
         component={SelectDateTime}
-        options={{ title: 'Selecione o horário' }}
+        options={({ navigation }) => ({
+          title: 'Selecione o horário',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon name="chevron-left" size={35} color="#fff" />
+            </TouchableOpacity>
+          ),
+        })}
       />
       <Stack.Screen name="Confim" component={Confim} />
     </Stack.Navigator>
