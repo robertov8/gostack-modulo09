@@ -68,6 +68,9 @@ function New() {
 function App() {
   return (
     <Tab.Navigator
+      screenOptions={{
+        unmountOnBlur: true,
+      }}
       tabBarOptions={{
         keyboardHidesTabBar: true,
         activeTintColor: '#fff',
